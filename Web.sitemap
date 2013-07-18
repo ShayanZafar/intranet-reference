@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+  <siteMapNode url="~/Default.aspx" title="Main Page"  description="">
+      <!-- Role Specific home pages -->
+      <siteMapNode url="~/Member/profile.aspx" title="Profile"  description="Your Profile" roles="Member,Director,Executive,Associate,Administrator,Manager,Author" />
+    <siteMapNode url="~/Member/createTimeSheet.aspx" title="My Timesheet"  description="Fill out Employee TimeSheet" roles="Member,Director,Executive,Associate,Administrator,Manager,Author" />
+    
+
+    <siteMapNode url="~/Managers/viewTimesheets.aspx" title="Manage Timesheets"  description="Approve Employee TimeSheet" roles="Director,Executive,Associate,Administrator,Manager" />
+    <siteMapNode url="~/Member/searchDocuments.aspx" title="Search"  description="Search PDF's" roles="Member,Director,Executive,Associate,Administrator,Manager,Author" />
+    <siteMapNode url="~/Managers/viewProjectProfiles.aspx" title="Marketing"  description="View Documents" roles="Director,Executive,Associate,Administrator,Manager" />
+    <siteMapNode url="~/Managers/manageEmployees.aspx" title="Employees"  description="View Employees" roles="Director,Executive,Associate,Administrator,Manager" />
+    <!-- administrator menu items Access: Administrator Only -->
+    <siteMapNode url="" title="Admin"  description="" roles="Administrator" >
+      <siteMapNode url="~/Administrator/manageUsers.aspx" title="View User Accounts"  description="Manage User Accounts" roles="Administrator" />
+      <siteMapNode url="~/Administrator/createUser.aspx" title="Create User Account"  description="Create User Accounts" roles="Administrator" />
+      <siteMapNode url="~/Administrator/manageRoles.aspx" title="Create Roles"  description="Manage User Roles" roles="Administrator" />
+      <siteMapNode url="~/Administrator/UsersAndRoles.aspx" title="User Roles and Manager"  description="Manage Roles/Branch Managers" roles="Administrator" />
+    </siteMapNode>
+
+    <!-- Executive menu items Access: Executive and Administrator -->
+    <siteMapNode url="" title="Executive Reports"  description="" roles="Administrator,Executive" >
+      <siteMapNode url="~/Executives/reports.aspx" title="View Reports"  description="Your Reports based on Need" roles="Administrator,Executive" />
+      <siteMapNode url="~/Executives/allReports.aspx?sort=Financial Statements" title="Financial Statements"  description="Your Reports based on Need" roles="Administrator,Executive" />
+      <siteMapNode url="~/Executives/allReports.aspx?sort=Labour Utilization" title="Labour Utilization"  description="Your Reports based on Need" roles="Administrator,Executive" />
+      <siteMapNode url="~/Executives/allReports.aspx?sort=Employee File Listing" title="Employee File Listing"  description="Your Reports based on Need" roles="Administrator,Executive" />
+      <siteMapNode url="~/Executives/allReports.aspx?sort=Securement Value" title="Securement Value"  description="Your Reports based on Need" roles="Administrator,Executive" />
+     
+    </siteMapNode>
+
+    <!-- Director menu items Access: Director and Administrator -->
+    <siteMapNode url="" title="Director Reports"  description="" roles="Administrator,Director" >
+      <siteMapNode url="~/Directors/reports.aspx" title="View Reports"  description="Your Reports based on Need" roles="Administrator,Director" />
+      <siteMapNode url="~/Directors/allReports.aspx?sort=Financial Statements" title="Financial Statements"  description="Your Reports based on Need" roles="Administrator,Director" />
+      <siteMapNode url="~/Directors/allReports.aspx?sort=Labour Utilization" title="Labour Utilization"  description="Director Labor Report" roles="Administrator,Director" />
+      <siteMapNode url="~/Directors/allReports.aspx?sort=Employee File Listing" title="Employee File Listing"  description="Director Employee Files" roles="Administrator,Director" />
+      <siteMapNode url="~/Directors/allReports.aspx?sort=Securement Value" title="Securement Value"  description="Director Securement report" roles="Administrator,Director" />
+     
+    </siteMapNode>
+
+    <!-- Associate menu items Access: Associate & Administrator -->
+    <siteMapNode url="" title="Associate Report"  description="" roles="Administrator,Associate" >
+      <siteMapNode url="~/Associates/reports.aspx" title="View Reports"  description="Your Reports based on Need" roles="Administrator,Associate" />
+      <siteMapNode url="~/Associates/allReports.aspx?sort=Financial Statements" title="Financial Statements"  description="Associate Statements" roles="Administrator,Associate" />
+      <siteMapNode url="~/Associates/allReports.aspx?sort=Labour Utilization" title="Labour Utilization"  description="Associate Labour Reports" roles="Administrator,Associate" />
+      <siteMapNode url="~/Associates/allReports.aspx?sort=Employee File Listing" title="Employee File Listing"  description="Your Reports based on Need" roles="Administrator,Associate" />
+      <siteMapNode url="~/Associates/allReports.aspx?sort=Securement Value" title="Securement Value"  description="Director Securement Report" roles="Administrator,Associate" />
+     
+    </siteMapNode>
+
+    <!-- Author Menu items  -->
+    <siteMapNode url="" title="Tools"  description="" roles="Administrator,Author" >
+      <siteMapNode url="~/Author/manageDocuments.aspx" title="Document Management"  description="Manage Documents" roles="Administrator,Author" />
+      <siteMapNode url="~/Author/manageReports.aspx" title="Report Management"  description="Manage Reports" roles="Administrator,Author" />
+      <siteMapNode url="~/Author/uploadDocument.aspx" title="Upload Document"  description="Upload Documents" roles="Administrator,Author" />
+      <siteMapNode url="~/Author/uploadReport.aspx" title="Upload Report"  description="Upload Reports" roles="Administrator,Author" />
+    </siteMapNode>
+    
+    <!-- Generic menu items with cascading -->
+  
+      <siteMapNode url="" title="News"  description="Company News" roles="Member,Director,Executive,Associate,Administrator" >
+        <siteMapNode url="~/Member/News/News.aspx" title="Updates"  description="Latest Updates" roles="Member,Director,Executive,Associate,Administrator" />
+        <siteMapNode url="~/Member/News/Memo.aspx" title="Memos"  description="Latest Memos" roles="Member,Director,Executive,Associate,Administrator" />
+        <siteMapNode url="~/ui/Documents/Mosaic.pdf" title="Mosaic"  description="Mosaic" roles="Member,Director,Executive,Associate,Administrator" />
+      </siteMapNode>
+
+      <siteMapNode url="" title="Health/Safety"  description="Company News" roles="Member,Director,Executive,Associate,Administrator" >
+        <siteMapNode url="" title="Safety Procedures" description="safety procedures" roles="Member,Director,Executive,Associate,Administrator">
+          <siteMapNode url="~/ui/Documents/Device_Ban.pdf" title="Hand Held Decvice Ban"  description="Information on Hand Held Device Ban" roles="Member,Director,Executive,Associate,Administrator" />
+          <siteMapNode url="~/ui/Documents/Hogweed.pdf" title="Hog Weed"  description="Information on Hog Weed" roles="Member,Director,Executive,Associate,Administrator" />
+          <siteMapNode url="~/ui/Documents/Disabilities.pdf" title="Disabilities"  description="Information on Disabilities" roles="Member,Director,Executive,Associate,Administrator" />
+          <siteMapNode url="~/ui/Documents/Safety_Manual.pdf" title="Safety Manual"  description="Safety Information" roles="Member,Director,Executive,Associate,Administrator" />
+          <siteMapNode url="~/ui/Documents/Violence_Harassment.pdf" title="Violence and Harassment"  description="Harassment Policies" roles="Member,Director,Executive,Associate,Administrator" />
+        </siteMapNode>
+        <siteMapNode url="" title="WSIB" description="WSIB" roles="Member,Director,Executive,Associate,Administrator">
+          <siteMapNode url="~/ui/Documents/ModifiedWorkProgram.pdf" title="Modified Work Program"  description="" roles="Member,Director,Executive,Associate,Administrator" />
+          <siteMapNode url="~/ui/Documents/InjuredEmployee.pdf" title="Injured Employee Weekly Contact"  description="" roles="Member,Director,Executive,Associate,Administrator" />
+          <siteMapNode url="~/ui/Documents/InjuryReport.pdf" title="Employee Injury Report"  description="" roles="Member,Director,Executive,Associate,Administrator" />
+          <siteMapNode url="~/ui/Documents/HealthProfReport.pdf" title="Health Prof Report"  description="" roles="Member,Director,Executive,Associate,Administrator" />
+        </siteMapNode>
+      </siteMapNode>
+    
+   </siteMapNode>
+</siteMap>

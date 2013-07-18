@@ -1,0 +1,57 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="site.master.cs" Inherits="ui_mp_site" %>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link href="../css/Style.css" rel="stylesheet" type="text/css" />
+    <meta http-equiv="Page-Enter" content="blendTrans(Duration=0)"/>
+<meta http-equiv="Page-Exit" content="blendTrans(Duration=0)"/>
+
+</head>
+<body>
+    <form id="Form1" runat="server" autocomplete="off">
+    <div id="site-container">
+        <!-- Header -->
+        <div id="header-container">
+            <div id="logo">
+                <img alt="peto" width="800" height="120" src="/PetoMaccallumCA/ui/css/images/Peto_Logo.jpg" />
+            </div>
+            <div id="login-name">
+                <asp:LoginName ID="LoginName1" runat="server" FormatString="Welcome,  {0}" />
+                <br />
+                <asp:LoginStatus ID="LoginStatus1" runat="server" LoginText="" 
+                    LogoutPageUrl="~/Default.aspx" onloggedout="LoginStatus1_LoggedOut" 
+                    TabIndex="20" />
+            </div>
+        </div>
+        <!-- Peto Sidebar Menu -->
+        <div id="navbar">
+            <asp:Menu ID="Menu1" runat="server" DataSourceID="SiteMapDataSource1" RenderingMode="List"
+                BackColor="#5D7B9D" DynamicHorizontalOffset="3" Font-Names="Verdana" Font-Size="0.6em"
+                ForeColor="white" StaticSubMenuIndent="10px" MaximumDynamicDisplayLevels="2"
+                StaticDisplayLevels="1" StaticMenuStyle-HorizontalPadding="5px" Orientation="Horizontal"
+                StaticPopOutImageTextFormatString="">
+                <DynamicHoverStyle BackColor="Black" ForeColor="White" />
+                <DynamicMenuItemStyle ForeColor="Black" HorizontalPadding="5px" VerticalPadding="5px"
+                    Font-Bold="True" BorderStyle="Dotted" BorderWidth="1px" />
+                <DynamicMenuStyle BackColor="#F7F6F3" />
+                <StaticHoverStyle BackColor="Black" ForeColor="White" />
+                <StaticMenuItemStyle HorizontalPadding="5px" VerticalPadding="5px" BorderColor="Silver"
+                    BorderStyle="Outset" Font-Bold="True" />
+            </asp:Menu>
+            <asp:SiteMapDataSource ID="SiteMapDataSource1" ShowStartingNode="false" runat="server" />
+        </div>
+        <!-- Body -->
+        <div id="body-container">
+            <div id="placeholder">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+        </div>
+    </div>
+    </form>
+</body>
+</html>

@@ -1,0 +1,948 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="petomaccallumModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="petomaccallumModelStoreContainer">
+          <EntitySet Name="Branches" EntityType="petomaccallumModel.Store.Branches" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ChargeableJobs" EntityType="petomaccallumModel.Store.ChargeableJobs" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ClassificationActivities" EntityType="petomaccallumModel.Store.ClassificationActivities" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DocumentCategories" EntityType="petomaccallumModel.Store.DocumentCategories" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Documents" EntityType="petomaccallumModel.Store.Documents" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="EmpTests" EntityType="petomaccallumModel.Store.EmpTests" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ExpenseHeaders" EntityType="petomaccallumModel.Store.ExpenseHeaders" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ManagerChargeables" EntityType="petomaccallumModel.Store.ManagerChargeables" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ManagerNonChargeables" EntityType="petomaccallumModel.Store.ManagerNonChargeables" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ManagerTests" EntityType="petomaccallumModel.Store.ManagerTests" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="NonChargeables" EntityType="petomaccallumModel.Store.NonChargeables" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Permissions" EntityType="petomaccallumModel.Store.Permissions" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Projects" EntityType="petomaccallumModel.Store.Projects" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ReportCategories" EntityType="petomaccallumModel.Store.ReportCategories" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Reports" EntityType="petomaccallumModel.Store.Reports" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TimeSheets" EntityType="petomaccallumModel.Store.TimeSheets" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TimesheetStatus1" EntityType="petomaccallumModel.Store.TimesheetStatus1" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TypeOfWorks" EntityType="petomaccallumModel.Store.TypeOfWorks" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Users" EntityType="petomaccallumModel.Store.Users" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Vacations" EntityType="petomaccallumModel.Store.Vacations" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="Branches">
+          <Key>
+            <PropertyRef Name="BranchId" />
+          </Key>
+          <Property Name="BranchId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ChargeableJobs">
+          <Key>
+            <PropertyRef Name="ChargeableId" />
+          </Key>
+          <Property Name="ChargeableId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TimeSheetId" Type="int" Nullable="false" />
+          <Property Name="ProjectId" Type="int" />
+          <Property Name="Day" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="EmpHours" Type="decimal" Nullable="false" Precision="3" Scale="1" />
+          <Property Name="Classification" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Activity" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Accomodations" Type="decimal" Precision="19" Scale="4" />
+          <Property Name="TravelDistance" Type="int" />
+          <Property Name="Misc" Type="decimal" Precision="19" Scale="4" />
+          <Property Name="Remarks" Type="nvarchar" MaxLength="50" />
+          <Property Name="TruckDistance" Type="int" />
+        </EntityType>
+        <EntityType Name="ClassificationActivities">
+          <Key>
+            <PropertyRef Name="ClassificationId" />
+          </Key>
+          <Property Name="ClassificationId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ClassificationName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="ActivityName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="ProjectNo" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="DocumentCategories">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Documents">
+          <Key>
+            <PropertyRef Name="DocumentId" />
+          </Key>
+          <Property Name="DocumentId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="extension" Type="nchar" MaxLength="10" />
+          <Property Name="length" Type="int" />
+          <Property Name="size" Type="int" />
+          <Property Name="MIMEType" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateModified" Type="datetime" Nullable="false" />
+          <Property Name="fileContent" Type="varbinary(max)" Nullable="false" />
+          <Property Name="Category" Type="nvarchar" MaxLength="50" />
+          <Property Name="Role" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="EmpTests">
+          <Key>
+            <PropertyRef Name="TestId" />
+          </Key>
+          <Property Name="TestId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Day" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="LabTest" Type="decimal" />
+          <Property Name="TimeSheetId" Type="int" Nullable="false" />
+          <Property Name="DensityTest" Type="int" />
+        </EntityType>
+        <EntityType Name="ExpenseHeaders">
+          <Key>
+            <PropertyRef Name="ExpenseId" />
+          </Key>
+          <Property Name="ExpenseId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="AccountNumber" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ManagerChargeables">
+          <Key>
+            <PropertyRef Name="ManagerChargeableId" />
+          </Key>
+          <Property Name="ManagerChargeableId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TimeSheetId" Type="int" Nullable="false" />
+          <Property Name="Day" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="PayRollHours" Type="decimal" Precision="3" Scale="1" />
+          <Property Name="BillingHours" Type="decimal" Precision="3" Scale="1" />
+          <Property Name="PayRollTravelDistance" Type="int" />
+          <Property Name="BillingTravelDistance" Type="int" />
+          <Property Name="PayRollAccomodation" Type="decimal" Precision="19" Scale="4" />
+          <Property Name="BillingAccomodation" Type="decimal" Precision="19" Scale="4" />
+          <Property Name="PayRollMisc" Type="decimal" Precision="19" Scale="4" />
+          <Property Name="BillingMisc" Type="decimal" Precision="19" Scale="4" />
+          <Property Name="ProjectId" Type="int" Nullable="false" />
+          <Property Name="Classification" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Activity" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Remarks" Type="nvarchar" MaxLength="50" />
+          <Property Name="TruckDistance" Type="int" />
+        </EntityType>
+        <EntityType Name="ManagerNonChargeables">
+          <Key>
+            <PropertyRef Name="ManagerNonChargeableId" />
+          </Key>
+          <Property Name="ManagerNonChargeableId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TimeSheetId" Type="int" Nullable="false" />
+          <Property Name="Hours" Type="decimal" Precision="3" Scale="1" />
+          <Property Name="TypeHours" Type="nvarchar" MaxLength="50" />
+          <Property Name="Day" Type="nvarchar" MaxLength="50" />
+          <Property Name="Distance" Type="int" />
+          <Property Name="Accomodations" Type="decimal" Precision="19" Scale="4" />
+          <Property Name="Misc" Type="decimal" Precision="19" Scale="4" />
+          <Property Name="Remarks" Type="nvarchar" MaxLength="50" />
+          <Property Name="TypeExpense" Type="nvarchar" MaxLength="50" />
+          <Property Name="TruckDistance" Type="int" />
+        </EntityType>
+        <EntityType Name="ManagerTests">
+          <Key>
+            <PropertyRef Name="TestId" />
+          </Key>
+          <Property Name="TestId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Day" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="DensityTest" Type="int" />
+          <Property Name="TimeSheetId" Type="int" Nullable="false" />
+          <Property Name="LabTest" Type="decimal" />
+        </EntityType>
+        <EntityType Name="NonChargeables">
+          <Key>
+            <PropertyRef Name="NonChargeId" />
+          </Key>
+          <Property Name="NonChargeId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TimeSheetId" Type="int" Nullable="false" />
+          <Property Name="Hours" Type="decimal" Nullable="false" Precision="3" Scale="1" />
+          <Property Name="TypeHours" Type="nvarchar" MaxLength="50" />
+          <Property Name="Day" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Distance" Type="int" />
+          <Property Name="Accomodation" Type="decimal" Precision="19" Scale="4" />
+          <Property Name="Misc" Type="decimal" Precision="19" Scale="4" />
+          <Property Name="TypeExpense" Type="nvarchar" MaxLength="100" />
+          <Property Name="Remarks" Type="nvarchar" MaxLength="50" />
+          <Property Name="TruckDistance" Type="int" />
+        </EntityType>
+        <EntityType Name="Permissions">
+          <Key>
+            <PropertyRef Name="empnum" />
+          </Key>
+          <Property Name="NAME" Type="nvarchar" MaxLength="75" />
+          <Property Name="empnum" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="Ureports" Type="nvarchar" MaxLength="50" />
+          <Property Name="Timesheet" Type="nvarchar" MaxLength="50" />
+          <Property Name="Tmanager" Type="nvarchar" MaxLength="50" />
+          <Property Name="Fstatement" Type="nvarchar" MaxLength="50" />
+          <Property Name="MFstatement" Type="nvarchar" MaxLength="50" />
+          <Property Name="EFL" Type="nvarchar" MaxLength="50" />
+          <Property Name="EFLT" Type="nvarchar" MaxLength="50" />
+          <Property Name="EFLB" Type="nvarchar" MaxLength="50" />
+          <Property Name="EFLH" Type="nvarchar" MaxLength="50" />
+          <Property Name="EFLK" Type="nvarchar" MaxLength="50" />
+          <Property Name="LUReport" Type="nvarchar" MaxLength="50" />
+          <Property Name="SVReport" Type="nvarchar" MaxLength="50" />
+          <Property Name="EUR" Type="nvarchar" MaxLength="50" />
+          <Property Name="EURT" Type="nvarchar" MaxLength="50" />
+          <Property Name="EURB" Type="nvarchar" MaxLength="50" />
+          <Property Name="EURH" Type="nvarchar" MaxLength="50" />
+          <Property Name="EURK" Type="nvarchar" MaxLength="50" />
+          <Property Name="LUReportT" Type="nvarchar" MaxLength="50" />
+          <Property Name="LUReportH" Type="nvarchar" MaxLength="50" />
+          <Property Name="LUReportB" Type="nvarchar" MaxLength="50" />
+          <Property Name="LUReportK" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Projects">
+          <Key>
+            <PropertyRef Name="ProjectId" />
+          </Key>
+          <Property Name="ProjectId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ProjectName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ProjectNo" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="ClientName" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ReportCategories">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Reports">
+          <Key>
+            <PropertyRef Name="ReportId" />
+          </Key>
+          <Property Name="ReportId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="ReportDate" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateModified" Type="datetime" Nullable="false" />
+          <Property Name="Size" Type="int" Nullable="false" />
+          <Property Name="FileContent" Type="varbinary(max)" Nullable="false" />
+          <Property Name="MIMEType" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Category" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Extension" Type="nvarchar" MaxLength="5" />
+          <Property Name="Role" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TimeSheets">
+          <Key>
+            <PropertyRef Name="TimeSheetId" />
+          </Key>
+          <Property Name="TimeSheetId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeId" Type="int" Nullable="false" />
+          <Property Name="WeekEnding" Type="nvarchar" MaxLength="50" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateModified" Type="datetime" />
+          <Property Name="Status" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="ApprovedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateApproved" Type="datetime" />
+          <Property Name="EmployeeComments" Type="nvarchar(max)" />
+          <Property Name="ManagerComments" Type="nvarchar(max)" />
+          <Property Name="TotalHours" Type="decimal" Precision="3" Scale="1" />
+          <Property Name="TotalDistance" Type="int" />
+          <Property Name="EmployeeName" Type="nvarchar(max)" />
+          <Property Name="TotalExpenses" Type="decimal" Precision="19" Scale="4" />
+          <Property Name="TotalTruck" Type="int" />
+          <Property Name="Branch" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TimesheetStatus1">
+          <Key>
+            <PropertyRef Name="TimesheetID" />
+          </Key>
+          <Property Name="TimesheetID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="status" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TypeOfWorks">
+          <Key>
+            <PropertyRef Name="TypeId" />
+          </Key>
+          <Property Name="TypeId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="password" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="branch" Type="nvarchar" MaxLength="50" />
+          <Property Name="empNo" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Role" Type="nvarchar" MaxLength="50" />
+          <Property Name="ManagedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Vacations">
+          <Key>
+            <PropertyRef Name="VacationId" />
+          </Key>
+          <Property Name="VacationId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="EmpNo" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="vacEntitled" Type="decimal" />
+          <Property Name="vacAccrued" Type="decimal" />
+          <Property Name="vacTaken" Type="decimal" />
+          <Property Name="vacBalance" Type="decimal" />
+          <Property Name="sbEntitled" Type="decimal" />
+          <Property Name="sbTaken" Type="decimal" />
+          <Property Name="sbBalance" Type="decimal" />
+          <Property Name="sickEntitled" Type="decimal" />
+          <Property Name="sickTaken" Type="decimal" />
+          <Property Name="sickBalance" Type="decimal" />
+          <Property Name="otPayable" Type="nchar" MaxLength="10" />
+          <Property Name="otBanked" Type="nchar" MaxLength="10" />
+          <Property Name="botLimit" Type="decimal" />
+          <Property Name="botTaken" Type="decimal" />
+          <Property Name="botBalance" Type="decimal" />
+          <Property Name="otherTimeOff" Type="decimal" />
+          <Property Name="botStandard" Type="decimal" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="petomaccallumModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="PetoEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ChargeableJobs" EntityType="petomaccallumModel.ChargeableJob" />
+          <EntitySet Name="ClassificationActivities" EntityType="petomaccallumModel.ClassificationActivity" />
+          <EntitySet Name="DocumentCategories" EntityType="petomaccallumModel.DocumentCategory" />
+          <EntitySet Name="Documents" EntityType="petomaccallumModel.Document" />
+          <EntitySet Name="EmpTests" EntityType="petomaccallumModel.EmpTest" />
+          <EntitySet Name="ExpenseHeaders" EntityType="petomaccallumModel.ExpenseHeader" />
+          <EntitySet Name="ManagerChargeables" EntityType="petomaccallumModel.ManagerChargeable" />
+          <EntitySet Name="ManagerNonChargeables" EntityType="petomaccallumModel.ManagerNonChargeable" />
+          <EntitySet Name="ManagerTests" EntityType="petomaccallumModel.ManagerTest" />
+          <EntitySet Name="NonChargeables" EntityType="petomaccallumModel.NonChargeable" />
+          <EntitySet Name="Projects" EntityType="petomaccallumModel.Project" />
+          <EntitySet Name="ReportCategories" EntityType="petomaccallumModel.ReportCategory" />
+          <EntitySet Name="Reports" EntityType="petomaccallumModel.Report" />
+          <EntitySet Name="TimeSheets" EntityType="petomaccallumModel.TimeSheet" />
+          <EntitySet Name="Users" EntityType="petomaccallumModel.User" />
+          <EntitySet Name="Vacations" EntityType="petomaccallumModel.Vacation" />
+          <EntitySet Name="Branches" EntityType="petomaccallumModel.Branch" />
+          <EntitySet Name="Permissions" EntityType="petomaccallumModel.Permission" />
+          <EntitySet Name="TimesheetStatus1" EntityType="petomaccallumModel.TimesheetStatus1" />
+          <EntitySet Name="TypeOfWorks" EntityType="petomaccallumModel.TypeOfWork" />
+        </EntityContainer>
+        <EntityType Name="ChargeableJob">
+          <Key>
+            <PropertyRef Name="ChargeableId" />
+          </Key>
+          <Property Type="Int32" Name="ChargeableId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="TimeSheetId" Nullable="false" />
+          <Property Type="Int32" Name="ProjectId" />
+          <Property Type="String" Name="Day" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="EmpHours" Nullable="false" Precision="3" Scale="1" />
+          <Property Type="String" Name="Classification" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Activity" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="Accomodations" Precision="19" Scale="4" />
+          <Property Type="Int32" Name="TravelDistance" />
+          <Property Type="Decimal" Name="Misc" Precision="19" Scale="4" />
+          <Property Type="String" Name="Remarks" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="TruckDistance" />
+        </EntityType>
+        <EntityType Name="ClassificationActivity">
+          <Key>
+            <PropertyRef Name="ClassificationId" />
+          </Key>
+          <Property Type="Int32" Name="ClassificationId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="ClassificationName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ActivityName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ProjectNo" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="DocumentCategory">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Type="Int32" Name="CategoryId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Document">
+          <Key>
+            <PropertyRef Name="DocumentId" />
+          </Key>
+          <Property Type="Int32" Name="DocumentId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="extension" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Type="Int32" Name="length" />
+          <Property Type="Int32" Name="size" />
+          <Property Type="String" Name="MIMEType" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="DateCreated" Nullable="false" />
+          <Property Type="DateTime" Name="DateModified" Nullable="false" />
+          <Property Type="Binary" Name="fileContent" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Type="String" Name="Category" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Role" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="EmpTest">
+          <Key>
+            <PropertyRef Name="TestId" />
+          </Key>
+          <Property Type="Int32" Name="TestId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Day" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="LabTest" Precision="18" Scale="0" />
+          <Property Type="Int32" Name="TimeSheetId" Nullable="false" />
+          <Property Type="Int32" Name="DensityTest" />
+        </EntityType>
+        <EntityType Name="ExpenseHeader">
+          <Key>
+            <PropertyRef Name="ExpenseId" />
+          </Key>
+          <Property Type="Int32" Name="ExpenseId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="AccountNumber" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ManagerChargeable">
+          <Key>
+            <PropertyRef Name="ManagerChargeableId" />
+          </Key>
+          <Property Type="Int32" Name="ManagerChargeableId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="TimeSheetId" Nullable="false" />
+          <Property Type="String" Name="Day" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="PayRollHours" Precision="3" Scale="1" />
+          <Property Type="Decimal" Name="BillingHours" Precision="3" Scale="1" />
+          <Property Type="Int32" Name="PayRollTravelDistance" />
+          <Property Type="Int32" Name="BillingTravelDistance" />
+          <Property Type="Decimal" Name="PayRollAccomodation" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="BillingAccomodation" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="PayRollMisc" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="BillingMisc" Precision="19" Scale="4" />
+          <Property Type="Int32" Name="ProjectId" Nullable="false" />
+          <Property Type="String" Name="Classification" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Activity" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Remarks" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="TruckDistance" />
+        </EntityType>
+        <EntityType Name="ManagerNonChargeable">
+          <Key>
+            <PropertyRef Name="ManagerNonChargeableId" />
+          </Key>
+          <Property Type="Int32" Name="ManagerNonChargeableId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="TimeSheetId" Nullable="false" />
+          <Property Type="Decimal" Name="Hours" Precision="3" Scale="1" />
+          <Property Type="String" Name="TypeHours" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Day" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Distance" />
+          <Property Type="Decimal" Name="Accomodations" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="Misc" Precision="19" Scale="4" />
+          <Property Type="String" Name="Remarks" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TypeExpense" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="TruckDistance" />
+        </EntityType>
+        <EntityType Name="ManagerTest">
+          <Key>
+            <PropertyRef Name="TestId" />
+          </Key>
+          <Property Type="Int32" Name="TestId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Day" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="DensityTest" />
+          <Property Type="Int32" Name="TimeSheetId" Nullable="false" />
+          <Property Type="Decimal" Name="LabTest" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="NonChargeable">
+          <Key>
+            <PropertyRef Name="NonChargeId" />
+          </Key>
+          <Property Type="Int32" Name="NonChargeId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="TimeSheetId" Nullable="false" />
+          <Property Type="Decimal" Name="Hours" Nullable="false" Precision="3" Scale="1" />
+          <Property Type="String" Name="TypeHours" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Day" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Distance" />
+          <Property Type="Decimal" Name="Accomodation" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="Misc" Precision="19" Scale="4" />
+          <Property Type="String" Name="TypeExpense" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Remarks" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="TruckDistance" />
+        </EntityType>
+        <EntityType Name="Project">
+          <Key>
+            <PropertyRef Name="ProjectId" />
+          </Key>
+          <Property Type="Int32" Name="ProjectId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="ProjectName" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ProjectNo" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ClientName" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ReportCategory">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Type="Int32" Name="CategoryId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Report">
+          <Key>
+            <PropertyRef Name="ReportId" />
+          </Key>
+          <Property Type="Int32" Name="ReportId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ReportDate" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="DateCreated" Nullable="false" />
+          <Property Type="DateTime" Name="DateModified" Nullable="false" />
+          <Property Type="Int32" Name="Size" Nullable="false" />
+          <Property Type="Binary" Name="FileContent" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Type="String" Name="MIMEType" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Category" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Extension" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Role" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Type" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TimeSheet">
+          <Key>
+            <PropertyRef Name="TimeSheetId" />
+          </Key>
+          <Property Type="Int32" Name="TimeSheetId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="EmployeeId" Nullable="false" />
+          <Property Type="String" Name="WeekEnding" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ModifiedBy" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="DateModified" />
+          <Property Type="String" Name="Status" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="DateCreated" />
+          <Property Type="String" Name="ApprovedBy" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="DateApproved" />
+          <Property Type="String" Name="EmployeeComments" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ManagerComments" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="TotalHours" Precision="3" Scale="1" />
+          <Property Type="Int32" Name="TotalDistance" />
+          <Property Type="String" Name="EmployeeName" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="TotalExpenses" Precision="19" Scale="4" />
+          <Property Type="Int32" Name="TotalTruck" />
+          <Property Type="String" Name="Branch" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Type="Int32" Name="UserId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="username" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="password" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FirstName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="branch" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="empNo" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LastName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="MiddleName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Role" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ManagedBy" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Status" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Vacation">
+          <Key>
+            <PropertyRef Name="VacationId" />
+          </Key>
+          <Property Type="Int32" Name="VacationId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="EmpNo" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="vacEntitled" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="vacAccrued" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="vacTaken" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="vacBalance" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="sbEntitled" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="sbTaken" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="sbBalance" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="sickEntitled" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="sickTaken" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="sickBalance" Precision="18" Scale="0" />
+          <Property Type="String" Name="otPayable" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="otBanked" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Type="Decimal" Name="botLimit" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="botTaken" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="botBalance" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="otherTimeOff" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="botStandard" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="Branch">
+          <Key>
+            <PropertyRef Name="BranchId" />
+          </Key>
+          <Property Type="Int32" Name="BranchId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Permission">
+          <Key>
+            <PropertyRef Name="empnum" />
+          </Key>
+          <Property Type="String" Name="NAME" MaxLength="75" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="empnum" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Ureports" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Timesheet" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Tmanager" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Fstatement" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="MFstatement" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EFL" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EFLT" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EFLB" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EFLH" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EFLK" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LUReport" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SVReport" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EUR" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EURT" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EURB" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EURH" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EURK" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LUReportT" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LUReportH" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LUReportB" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LUReportK" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TimesheetStatus1">
+          <Key>
+            <PropertyRef Name="TimesheetID" />
+          </Key>
+          <Property Type="Int32" Name="TimesheetID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="status" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TypeOfWork">
+          <Key>
+            <PropertyRef Name="TypeId" />
+          </Key>
+          <Property Type="Int32" Name="TypeId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="petomaccallumModelStoreContainer" CdmEntityContainer="PetoEntities">
+          <EntitySetMapping Name="ChargeableJobs">
+            <EntityTypeMapping TypeName="petomaccallumModel.ChargeableJob">
+              <MappingFragment StoreEntitySet="ChargeableJobs">
+                <ScalarProperty Name="TruckDistance" ColumnName="TruckDistance" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="Misc" ColumnName="Misc" />
+                <ScalarProperty Name="TravelDistance" ColumnName="TravelDistance" />
+                <ScalarProperty Name="Accomodations" ColumnName="Accomodations" />
+                <ScalarProperty Name="Activity" ColumnName="Activity" />
+                <ScalarProperty Name="Classification" ColumnName="Classification" />
+                <ScalarProperty Name="EmpHours" ColumnName="EmpHours" />
+                <ScalarProperty Name="Day" ColumnName="Day" />
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+                <ScalarProperty Name="TimeSheetId" ColumnName="TimeSheetId" />
+                <ScalarProperty Name="ChargeableId" ColumnName="ChargeableId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClassificationActivities">
+            <EntityTypeMapping TypeName="petomaccallumModel.ClassificationActivity">
+              <MappingFragment StoreEntitySet="ClassificationActivities">
+                <ScalarProperty Name="ProjectNo" ColumnName="ProjectNo" />
+                <ScalarProperty Name="ActivityName" ColumnName="ActivityName" />
+                <ScalarProperty Name="ClassificationName" ColumnName="ClassificationName" />
+                <ScalarProperty Name="ClassificationId" ColumnName="ClassificationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DocumentCategories">
+            <EntityTypeMapping TypeName="petomaccallumModel.DocumentCategory">
+              <MappingFragment StoreEntitySet="DocumentCategories">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Documents">
+            <EntityTypeMapping TypeName="petomaccallumModel.Document">
+              <MappingFragment StoreEntitySet="Documents">
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="fileContent" ColumnName="fileContent" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="MIMEType" ColumnName="MIMEType" />
+                <ScalarProperty Name="size" ColumnName="size" />
+                <ScalarProperty Name="length" ColumnName="length" />
+                <ScalarProperty Name="extension" ColumnName="extension" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="DocumentId" ColumnName="DocumentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmpTests">
+            <EntityTypeMapping TypeName="petomaccallumModel.EmpTest">
+              <MappingFragment StoreEntitySet="EmpTests">
+                <ScalarProperty Name="DensityTest" ColumnName="DensityTest" />
+                <ScalarProperty Name="TimeSheetId" ColumnName="TimeSheetId" />
+                <ScalarProperty Name="LabTest" ColumnName="LabTest" />
+                <ScalarProperty Name="Day" ColumnName="Day" />
+                <ScalarProperty Name="TestId" ColumnName="TestId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExpenseHeaders">
+            <EntityTypeMapping TypeName="petomaccallumModel.ExpenseHeader">
+              <MappingFragment StoreEntitySet="ExpenseHeaders">
+                <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ExpenseId" ColumnName="ExpenseId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ManagerChargeables">
+            <EntityTypeMapping TypeName="petomaccallumModel.ManagerChargeable">
+              <MappingFragment StoreEntitySet="ManagerChargeables">
+                <ScalarProperty Name="TruckDistance" ColumnName="TruckDistance" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="Activity" ColumnName="Activity" />
+                <ScalarProperty Name="Classification" ColumnName="Classification" />
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+                <ScalarProperty Name="BillingMisc" ColumnName="BillingMisc" />
+                <ScalarProperty Name="PayRollMisc" ColumnName="PayRollMisc" />
+                <ScalarProperty Name="BillingAccomodation" ColumnName="BillingAccomodation" />
+                <ScalarProperty Name="PayRollAccomodation" ColumnName="PayRollAccomodation" />
+                <ScalarProperty Name="BillingTravelDistance" ColumnName="BillingTravelDistance" />
+                <ScalarProperty Name="PayRollTravelDistance" ColumnName="PayRollTravelDistance" />
+                <ScalarProperty Name="BillingHours" ColumnName="BillingHours" />
+                <ScalarProperty Name="PayRollHours" ColumnName="PayRollHours" />
+                <ScalarProperty Name="Day" ColumnName="Day" />
+                <ScalarProperty Name="TimeSheetId" ColumnName="TimeSheetId" />
+                <ScalarProperty Name="ManagerChargeableId" ColumnName="ManagerChargeableId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ManagerNonChargeables">
+            <EntityTypeMapping TypeName="petomaccallumModel.ManagerNonChargeable">
+              <MappingFragment StoreEntitySet="ManagerNonChargeables">
+                <ScalarProperty Name="TruckDistance" ColumnName="TruckDistance" />
+                <ScalarProperty Name="TypeExpense" ColumnName="TypeExpense" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="Misc" ColumnName="Misc" />
+                <ScalarProperty Name="Accomodations" ColumnName="Accomodations" />
+                <ScalarProperty Name="Distance" ColumnName="Distance" />
+                <ScalarProperty Name="Day" ColumnName="Day" />
+                <ScalarProperty Name="TypeHours" ColumnName="TypeHours" />
+                <ScalarProperty Name="Hours" ColumnName="Hours" />
+                <ScalarProperty Name="TimeSheetId" ColumnName="TimeSheetId" />
+                <ScalarProperty Name="ManagerNonChargeableId" ColumnName="ManagerNonChargeableId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ManagerTests">
+            <EntityTypeMapping TypeName="petomaccallumModel.ManagerTest">
+              <MappingFragment StoreEntitySet="ManagerTests">
+                <ScalarProperty Name="LabTest" ColumnName="LabTest" />
+                <ScalarProperty Name="TimeSheetId" ColumnName="TimeSheetId" />
+                <ScalarProperty Name="DensityTest" ColumnName="DensityTest" />
+                <ScalarProperty Name="Day" ColumnName="Day" />
+                <ScalarProperty Name="TestId" ColumnName="TestId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NonChargeables">
+            <EntityTypeMapping TypeName="petomaccallumModel.NonChargeable">
+              <MappingFragment StoreEntitySet="NonChargeables">
+                <ScalarProperty Name="TruckDistance" ColumnName="TruckDistance" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="TypeExpense" ColumnName="TypeExpense" />
+                <ScalarProperty Name="Misc" ColumnName="Misc" />
+                <ScalarProperty Name="Accomodation" ColumnName="Accomodation" />
+                <ScalarProperty Name="Distance" ColumnName="Distance" />
+                <ScalarProperty Name="Day" ColumnName="Day" />
+                <ScalarProperty Name="TypeHours" ColumnName="TypeHours" />
+                <ScalarProperty Name="Hours" ColumnName="Hours" />
+                <ScalarProperty Name="TimeSheetId" ColumnName="TimeSheetId" />
+                <ScalarProperty Name="NonChargeId" ColumnName="NonChargeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Projects">
+            <EntityTypeMapping TypeName="petomaccallumModel.Project">
+              <MappingFragment StoreEntitySet="Projects">
+                <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+                <ScalarProperty Name="ProjectNo" ColumnName="ProjectNo" />
+                <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReportCategories">
+            <EntityTypeMapping TypeName="petomaccallumModel.ReportCategory">
+              <MappingFragment StoreEntitySet="ReportCategories">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reports">
+            <EntityTypeMapping TypeName="petomaccallumModel.Report">
+              <MappingFragment StoreEntitySet="Reports">
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="Extension" ColumnName="Extension" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="MIMEType" ColumnName="MIMEType" />
+                <ScalarProperty Name="FileContent" ColumnName="FileContent" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="ReportDate" ColumnName="ReportDate" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ReportId" ColumnName="ReportId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TimeSheets">
+            <EntityTypeMapping TypeName="petomaccallumModel.TimeSheet">
+              <MappingFragment StoreEntitySet="TimeSheets">
+                <ScalarProperty Name="Branch" ColumnName="Branch" />
+                <ScalarProperty Name="TotalTruck" ColumnName="TotalTruck" />
+                <ScalarProperty Name="TotalExpenses" ColumnName="TotalExpenses" />
+                <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
+                <ScalarProperty Name="TotalDistance" ColumnName="TotalDistance" />
+                <ScalarProperty Name="TotalHours" ColumnName="TotalHours" />
+                <ScalarProperty Name="ManagerComments" ColumnName="ManagerComments" />
+                <ScalarProperty Name="EmployeeComments" ColumnName="EmployeeComments" />
+                <ScalarProperty Name="DateApproved" ColumnName="DateApproved" />
+                <ScalarProperty Name="ApprovedBy" ColumnName="ApprovedBy" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="WeekEnding" ColumnName="WeekEnding" />
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+                <ScalarProperty Name="TimeSheetId" ColumnName="TimeSheetId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="petomaccallumModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ManagedBy" ColumnName="ManagedBy" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="empNo" ColumnName="empNo" />
+                <ScalarProperty Name="branch" ColumnName="branch" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vacations">
+            <EntityTypeMapping TypeName="petomaccallumModel.Vacation">
+              <MappingFragment StoreEntitySet="Vacations">
+                <ScalarProperty Name="botStandard" ColumnName="botStandard" />
+                <ScalarProperty Name="otherTimeOff" ColumnName="otherTimeOff" />
+                <ScalarProperty Name="botBalance" ColumnName="botBalance" />
+                <ScalarProperty Name="botTaken" ColumnName="botTaken" />
+                <ScalarProperty Name="botLimit" ColumnName="botLimit" />
+                <ScalarProperty Name="otBanked" ColumnName="otBanked" />
+                <ScalarProperty Name="otPayable" ColumnName="otPayable" />
+                <ScalarProperty Name="sickBalance" ColumnName="sickBalance" />
+                <ScalarProperty Name="sickTaken" ColumnName="sickTaken" />
+                <ScalarProperty Name="sickEntitled" ColumnName="sickEntitled" />
+                <ScalarProperty Name="sbBalance" ColumnName="sbBalance" />
+                <ScalarProperty Name="sbTaken" ColumnName="sbTaken" />
+                <ScalarProperty Name="sbEntitled" ColumnName="sbEntitled" />
+                <ScalarProperty Name="vacBalance" ColumnName="vacBalance" />
+                <ScalarProperty Name="vacTaken" ColumnName="vacTaken" />
+                <ScalarProperty Name="vacAccrued" ColumnName="vacAccrued" />
+                <ScalarProperty Name="vacEntitled" ColumnName="vacEntitled" />
+                <ScalarProperty Name="EmpNo" ColumnName="EmpNo" />
+                <ScalarProperty Name="VacationId" ColumnName="VacationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Branches">
+            <EntityTypeMapping TypeName="petomaccallumModel.Branch">
+              <MappingFragment StoreEntitySet="Branches">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Permissions">
+            <EntityTypeMapping TypeName="petomaccallumModel.Permission">
+              <MappingFragment StoreEntitySet="Permissions">
+                <ScalarProperty Name="LUReportK" ColumnName="LUReportK" />
+                <ScalarProperty Name="LUReportB" ColumnName="LUReportB" />
+                <ScalarProperty Name="LUReportH" ColumnName="LUReportH" />
+                <ScalarProperty Name="LUReportT" ColumnName="LUReportT" />
+                <ScalarProperty Name="EURK" ColumnName="EURK" />
+                <ScalarProperty Name="EURH" ColumnName="EURH" />
+                <ScalarProperty Name="EURB" ColumnName="EURB" />
+                <ScalarProperty Name="EURT" ColumnName="EURT" />
+                <ScalarProperty Name="EUR" ColumnName="EUR" />
+                <ScalarProperty Name="SVReport" ColumnName="SVReport" />
+                <ScalarProperty Name="LUReport" ColumnName="LUReport" />
+                <ScalarProperty Name="EFLK" ColumnName="EFLK" />
+                <ScalarProperty Name="EFLH" ColumnName="EFLH" />
+                <ScalarProperty Name="EFLB" ColumnName="EFLB" />
+                <ScalarProperty Name="EFLT" ColumnName="EFLT" />
+                <ScalarProperty Name="EFL" ColumnName="EFL" />
+                <ScalarProperty Name="MFstatement" ColumnName="MFstatement" />
+                <ScalarProperty Name="Fstatement" ColumnName="Fstatement" />
+                <ScalarProperty Name="Tmanager" ColumnName="Tmanager" />
+                <ScalarProperty Name="Timesheet" ColumnName="Timesheet" />
+                <ScalarProperty Name="Ureports" ColumnName="Ureports" />
+                <ScalarProperty Name="empnum" ColumnName="empnum" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TimesheetStatus1">
+            <EntityTypeMapping TypeName="petomaccallumModel.TimesheetStatus1">
+              <MappingFragment StoreEntitySet="TimesheetStatus1">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="TimesheetID" ColumnName="TimesheetID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypeOfWorks">
+            <EntityTypeMapping TypeName="petomaccallumModel.TypeOfWork">
+              <MappingFragment StoreEntitySet="TypeOfWorks">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="PetoModel" DisplayType="true" ZoomLevel="86">
+        <EntityTypeShape EntityType="petomaccallumModel.ChargeableJob" Width="1.5" PointX="0.75" PointY="0.75" Height="3.3263964843750102" />
+        <EntityTypeShape EntityType="petomaccallumModel.ClassificationActivity" Width="1.5" PointX="2.75" PointY="0.75" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="petomaccallumModel.DocumentCategory" Width="1.5" PointX="2.75" PointY="3.75" Height="1.4033821614583246" />
+        <EntityTypeShape EntityType="petomaccallumModel.Document" Width="1.5" PointX="4.75" PointY="0.75" Height="3.1340950520833246" />
+        <EntityTypeShape EntityType="petomaccallumModel.EmpTest" Width="1.5" PointX="4.75" PointY="4.75" Height="1.9802864583333246" />
+        <EntityTypeShape EntityType="petomaccallumModel.ExpenseHeader" Width="1.5" PointX="6.75" PointY="0.75" Height="1.5956835937500102" />
+        <EntityTypeShape EntityType="petomaccallumModel.ManagerChargeable" Width="1.5" PointX="0.75" PointY="6.75" Height="4.0956022135416674" />
+        <EntityTypeShape EntityType="petomaccallumModel.ManagerNonChargeable" Width="1.5" PointX="6.75" PointY="3.75" Height="3.1340950520833246" />
+        <EntityTypeShape EntityType="petomaccallumModel.ManagerTest" Width="1.5" PointX="2.75" PointY="7.75" Height="1.9802864583333246" />
+        <EntityTypeShape EntityType="petomaccallumModel.NonChargeable" Width="1.5" PointX="4.75" PointY="7.75" Height="3.1340950520833246" />
+        <EntityTypeShape EntityType="petomaccallumModel.Project" Width="1.5" PointX="6.75" PointY="7.75" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="petomaccallumModel.ReportCategory" Width="1.5" PointX="8.75" PointY="0.75" Height="1.4033821614583246" />
+        <EntityTypeShape EntityType="petomaccallumModel.Report" Width="1.5" PointX="8.75" PointY="3.75" Height="3.326396484374996" />
+        <EntityTypeShape EntityType="petomaccallumModel.TimeSheet" Width="1.5" PointX="8.75" PointY="8.75" Height="4.2879036458333246" />
+        <EntityTypeShape EntityType="petomaccallumModel.User" Width="1.5" PointX="10.75" PointY="0.75" Height="3.1340950520833246" />
+        <EntityTypeShape EntityType="petomaccallumModel.Vacation" Width="1.5" PointX="10.75" PointY="4.75" Height="4.6725065104166674" />
+        <EntityTypeShape EntityType="petomaccallumModel.Branch" Width="1.5" PointX="0.75" PointY="11.75" Height="1.4033821614583246" />
+        <EntityTypeShape EntityType="petomaccallumModel.Permission" Width="1.5" PointX="2.75" PointY="11.75" Height="5.4417122395833246" />
+        <EntityTypeShape EntityType="petomaccallumModel.TimesheetStatus1" Width="1.5" PointX="4.75" PointY="11.75" Height="1.4033821614583246" />
+        <EntityTypeShape EntityType="petomaccallumModel.TypeOfWork" Width="1.5" PointX="11.75" PointY="10.75" Height="1.4033821614583246" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
